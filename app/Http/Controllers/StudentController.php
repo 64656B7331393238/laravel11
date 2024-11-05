@@ -7,23 +7,11 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     //
-    function show()
+    function getStudents()
     {
-        return "LIST OF STUDENT";
-    }
-
-    function add()
-    {
-        return "STUDENT ADDED";
-    }
-
-    function delete()
-    {
-        return "STUDENT DELETED";
-    }
-
-    function about($name)
-    {
-        return "STUDENT name is " . $name;
+        $students = \App\Models\Student::all();
+        $data = new \App\Models\Student;
+        echo $data->testFunction();
+        return view("students", ["students" => $students]);
     }
 }

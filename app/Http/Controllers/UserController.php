@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     // function addUser(Request $request)
@@ -26,23 +26,29 @@ class UserController extends Controller
     //     print_r($request->skill);
     // }
 
-    function addUser(Request $request)
+    // function addUser(Request $request)
+    // {
+    //     $request->validate(
+    //         [
+    //             'username' => 'required | min:3 | max:15 ',
+    //             'email' => 'required | email',
+    //             'city' => 'required | uppercase',
+    //             'skills' => 'required'
+    //         ],
+    //         [
+    //             'username.required' => 'username can not be empty',
+    //             'username.min' => 'user min characters should be 3',
+    //             'username.max' => 'user max characters should be 15',
+    //             'email.email' => 'this email is not valid',
+    //             'city.uppercase' => 'City should be in uppercase only'
+    //         ]
+    //     );
+    //     return $request;
+    // }
+
+    function users()
     {
-        $request->validate(
-            [
-                'username' => 'required | min:3 | max:15 ',
-                'email' => 'required | email',
-                'city' => 'required | uppercase',
-                'skills' => 'required'
-            ],
-            [
-                'username.required' => 'username can not be empty',
-                'username.min' => 'user min characters should be 3',
-                'username.max' => 'user max characters should be 15',
-                'email.email' => 'this email is not valid',
-                'city.uppercase' => 'City should be in uppercase only'
-            ]
-        );
-        return $request;
+        $users = DB::select('select * from user_example');
+        return view('users', ["users" => $users]);
     }
 }
