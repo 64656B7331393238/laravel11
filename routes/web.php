@@ -1,58 +1,38 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\StudentController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\AgeCheck;
-use App\Http\Middleware\CountryCheck;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('students', [StudentController::class, 'getStudents']);
+Route::view('user', 'user');
+Route::post('add', [UserController::class, 'addUser']);
+// Route::view('login', 'login');
+// Route::view('profile', 'profile');
+// Route::get('logout', [UserController::class, 'logout']);
+// Route::post('login', [UserController::class, 'login']);
+// Route::get('user', [UserController::class, 'any']);
+// Route::post('user', [UserController::class, 'any']);
+// Route::put('user', [UserController::class, 'any']);
+// Route::put('user', [UserController::class, 'any']);
 
-// Route::get('users', [UserController::class, 'users']);
-
-// Route::view('home', 'home')->middleware([AgeCheck::class, CountryCheck::class]);
-// Route::view('about', 'about')->middleware(AgeCheck::class);
-
-// Route::view('home', 'home')->middleware('check1'); //user cannot access under 18, and only from the india
-
-// Route::middleware('check1')->group(function () {
-//     Route::view('about', 'about');
-//     Route::view('list', 'about');
-//     Route::view('user', 'about');
-//     Route::view('contact', 'about');
-// });
-
-// Route::view('home/profile/user', 'home')->name('hm');
-// Route::view('home/username/{name}', 'home')->name('user');
-
-// Route::get('user', [HomeController::class, 'user']);
-// Route::get('show', [HomeController::class, 'show']);
-
-// Route::prefix('student')->group(function () {
-//     Route::view('/home', 'home');
-//     Route::get('/show', [HomeController::class, 'show']);
-//     Route::get('/add', [HomeController::class, 'add']);
-// });
-
-// Route::prefix('student/india')->group(function () {
-//     Route::view('home', 'home');
-//     Route::get('show', [HomeController::class, 'show']);
-//     Route::get('add', [HomeController::class, 'add']);
-// });
+// Route::any('user', [UserController::class, 'any']);
 
 
+// Route::match(['get', 'post'], 'user', [UserController::class, 'group1']);
 
-// Route::controller(StudentController::class)->group(function () {
-//     Route::get('show', 'show');
+// Route::match(['put', 'delete'], 'user', [UserController::class, 'group2']);
 
-//     Route::get('add', 'add');
+// Route::view('form', 'user');
+// Route::get('user', [UserController::class, 'login']);
 
-//     Route::get('delete', 'delete');
-
-//     Route::get('about/{name}', 'about');
+// Route::get('/check-db', function () {
+//     try {
+//         DB::connection()->getPdo();
+//         echo "Database connection successful.";
+//     } catch (\Exception $e) {
+//         echo "Could not connect to the database. Please check your configuration.";
+//     }
 // });
