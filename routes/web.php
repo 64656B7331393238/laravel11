@@ -1,18 +1,40 @@
 <?php
 
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('home', 'home');
-Route::view('about', 'about');
-Route::view('login', 'login');
-Route::view('admin', 'admin');
+Route::get('list', [ProductController::class, 'productList']);
+// Route::view('sendEmail', 'sendEmail');
+// Route::get('sendMail', [MailController::class, 'sendEmail']);
+// Route::get('device/{key:name}', [DeviceController::class, 'index']);
+// $data = "hi, lets learn laravel";
+// $data = Str::of($data)
+//     ->ucfirst()
+//     ->replace("Hi", "Hello")
+//     ->camel();
+// $data = Str::ucfirst($data);
+// $data = Str::replace("Hi", "Hello", $data);
+// $data = Str::camel($data);
+// echo $data;
+// Route::get('list', [SellerController::class, 'list']);
+// Route::get('manyRel', [SellerController::class, 'manyRel']);
+// Route::get('manytoOne', [SellerController::class, 'manytoOne']);
+// Route::get('save', [StudentController::class, 'save']);
+// Route::view('home', 'home');
+// Route::view('about', 'about');
+// Route::view('login', 'login');
+// Route::view('admin', 'admin');
 // Route::view('upload', 'upload');
 // Route::post('upload', [ImageController::class, 'upload']);
 // Route::get('list', [ImageController::class, 'list']);
