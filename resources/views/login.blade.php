@@ -1,13 +1,17 @@
-<div>
+@extends('layout');
+@section('title','This is Login Page');
+
+@section('main')
+<div class="main">
     <h1>User Login</h1>
-    <form action="login" method="post">
-        @csrf
-        <input type="text" name="user" placeholder="Enter Name">
+    <form action="" method="post">
+        <input type="text" placeholder="Enter Name">
         <br>
         <br>
-        <input type="password" name="password" placeholder="Enter Password">
+        <input type="text" placeholder="Enter Password">
         <br>
         <br>
         <button>Login</button>
     </form>
 </div>
+@endsection

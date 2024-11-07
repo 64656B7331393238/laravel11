@@ -24,8 +24,9 @@ class StudentController extends Controller
 
     function displayStudent()
     {
-        $students = Student::all();
-        return view('displayStudent', ['students' => json_decode($students)]);
+        $students = Student::paginate(10);
+        // return $students;
+        return view('displayStudent', ['students' => $students]);
     }
 
     function deleteStudent($id)
@@ -55,6 +56,24 @@ class StudentController extends Controller
             return redirect('display');
         } else {
             return 'Record not updated';
+        }
+    }
+
+    function search(Request $req)
+    {
+        $student_name = $req->search;
+        $student_data = Student::where('name', 'like', '%' . $student_name . '%')->paginate(10);
+        ;
+        return view('displayStudent', ['students' => $student_data, 'search' => $student_name]);
+    }
+
+    function deleteMultiple(Request $request)
+    {
+        $result = Student::destroy($request->ids);
+        if ($result) {
+            return redirect('display');
+        } else {
+            return "Records are not deleted";
         }
     }
 }

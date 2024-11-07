@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
@@ -8,13 +9,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('student', 'student');
-Route::post('student', [StudentController::class, 'addStudent']);
+Route::view('home', 'home');
+Route::view('about', 'about');
+Route::view('login', 'login');
+Route::view('admin', 'admin');
+// Route::view('upload', 'upload');
+// Route::post('upload', [ImageController::class, 'upload']);
+// Route::get('list', [ImageController::class, 'list']);
+// Route::view('student', 'student');
+// Route::post('student', [StudentController::class, 'addStudent']);
 
-Route::get('display', [StudentController::class, 'displayStudent']);
-Route::get('delete/{id}', [StudentController::class, 'deleteStudent']);
-Route::get('edit/{id}', [StudentController::class, 'edit']);
-Route::put('editStudent/{id}', [StudentController::class, 'editStudent']);
+// Route::get('display', [StudentController::class, 'displayStudent']);
+// Route::get('delete/{id}', [StudentController::class, 'deleteStudent']);
+// Route::get('edit/{id}', [StudentController::class, 'edit']);
+// Route::put('editStudent/{id}', [StudentController::class, 'editStudent']);
+// Route::get("search", [StudentController::class, 'search']);
+// Route::post("deleteMulti", [StudentController::class, 'deleteMultiple']);
 // Route::middleware("SetLang")->group(function () {
 //     Route::get('/', function () {
 //         return view('welcome');
